@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(QtIconsExamples LANGUAGES CXX)
+project(QIconKitExamples LANGUAGES CXX)
 
 # 设置CMake变量
 set(CMAKE_CXX_STANDARD 20)
@@ -30,47 +30,44 @@ list(APPEND EXAMPLE_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/iconbrowser.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/qtwidgetsample.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/qtwidgetsample.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/twotoneicongrid.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/twotoneicongrid.cpp"
-
 )
 
 # 创建可执行文件
-qt_add_executable(QtIconsExamples
+qt_add_executable(QIconKitExamples
         ${EXAMPLE_SOURCES}
         MANUAL_FINALIZATION
 )
 
 # 简化MOC设置
-set_target_properties(QtIconsExamples PROPERTIES
+set_target_properties(QIconKitExamples PROPERTIES
         AUTOMOC ON
         AUTORCC ON
         AUTOUIC ON
 )
-target_compile_definitions(QtIconsExamples
+target_compile_definitions(QIconKitExamples
         PRIVATE
-        QtIcons_IMPORTS
+        QIconKit_IMPORTS
         QT_SHARED
 )
 
 # 包含二进制目录以找到生成的导出头文件
-target_include_directories(QtIconsExamples
+target_include_directories(QIconKitExamples
         PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_BINARY_DIR}/include
 )
 
-# 链接QtIcons库
-target_link_libraries(QtIconsExamples
+# 链接QIconKit库
+target_link_libraries(QIconKitExamples
         PRIVATE
-        QtIcons::QtIcons
+        QIconKit::QIconKit
         Qt${QT_VERSION_MAJOR}::Widgets
 )
 
 # 设置编译选项
 if(MSVC)
-    target_compile_options(QtIconsExamples
+    target_compile_options(QIconKitExamples
             PRIVATE
             /W4
             /utf-8
@@ -78,4 +75,4 @@ if(MSVC)
 endif()
 
 # 完成Qt设置
-qt_finalize_executable(QtIconsExamples)
+qt_finalize_executable(QIconKitExamples)

@@ -6,12 +6,12 @@
 #define QTICONS_H
 
 #include "icon_factories.h"
-#include "QtIcons/QtIcons_export.h"
+#include "QIconKit/QIconKit_export.h"
 
 
-namespace QtIcons {
+namespace QIconKit {
 
-class QTICONS_EXPORT QtIcons {
+class QICONKIT_EXPORT QIconKit {
 public:
     // 初始化库，加载所有内置字体
     static bool initialize();
@@ -37,11 +37,8 @@ public:
     // Material Icons - 尖角样式
     static QIcon materialSharpIcon(Material::Sharp::Icon icon, int size = 24, const QColor& color = Qt::black);
 
-    // Material Icons - 双色样式
-    static QIcon materialTwoToneIcon(Material::TwoTone::Icon icon, int size = 24, const QColor& color = Qt::black, const QColor& secondaryColor = QColor(0, 0, 0, 38));
-
     // 通用方法 - 根据变体类型获取Material图标
-    static QIcon materialIcon(int iconCode, Material::Style style = Material::Style::Filled, int size = 24, const QColor& color = Qt::black, const QColor& secondaryColor = QColor(0, 0, 0, 38));
+    static QIcon materialIcon(int iconCode, Material::Style style = Material::Style::Filled, int size = 24, const QColor& color = Qt::black);
 
     // 这里可以添加更多图标类型的方法...
 };

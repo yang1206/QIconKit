@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QTabWidget>
 #include "icongrid.h"
-#include "twotoneicongrid.h"
 
 class IconBrowser : public QWidget {
     Q_OBJECT
@@ -28,7 +27,6 @@ private:
     IconGrid* m_materialOutlinedIconGrid;
     IconGrid* m_materialRoundedIconGrid;
     IconGrid* m_materialSharpIconGrid;
-    TwoToneIconGrid* m_materialTwoToneIconGrid;
     // 这里可以添加更多图标网格
 };
 

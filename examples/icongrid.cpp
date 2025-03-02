@@ -1,5 +1,5 @@
 #include "icongrid.h"
-#include <QtIcons/qticons.h>
+#include <QIconKit/qiconkit.h>
 #include <QVBoxLayout>
 #include <QToolTip>
 #include <QTimer>

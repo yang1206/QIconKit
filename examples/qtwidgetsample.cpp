@@ -1,5 +1,5 @@
 #include "qtwidgetsample.h"
-#include <QtIcons/qticons.h>
+#include <QIconKit/qiconkit.h>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGroupBox>
@@ -54,13 +54,13 @@ void QtWidgetSample::addWidgetSamples() {
     pushButtonLabel->setMinimumWidth(120);
     
     QPushButton* btn1 = new QPushButton("账户");
-    btn1->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::AccountCircleFill, 16));
+    btn1->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::AccountCircleFill, 16));
     
     QPushButton* btn2 = new QPushButton("设置");
-    btn2->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::Settings4Fill, 16));
+    btn2->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::Settings4Fill, 16));
     
     QPushButton* btn3 = new QPushButton("警告");
-    btn3->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::AlarmWarningFill, 16, Qt::red));
+    btn3->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::AlarmWarningFill, 16, Qt::red));
     
     pushButtonLayout->addWidget(pushButtonLabel);
     pushButtonLayout->addWidget(btn1);
@@ -74,15 +74,15 @@ void QtWidgetSample::addWidgetSamples() {
     toolButtonLabel->setMinimumWidth(120);
     
     QToolButton* toolBtn1 = new QToolButton();
-    toolBtn1->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::FileAddFill, 16));
+    toolBtn1->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::FileAddFill, 16));
     toolBtn1->setToolTip("添加文件");
     
     QToolButton* toolBtn2 = new QToolButton();
-    toolBtn2->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::DeleteBin2Fill, 16));
+    toolBtn2->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::DeleteBin2Fill, 16));
     toolBtn2->setToolTip("删除");
     
     QToolButton* toolBtn3 = new QToolButton();
-    toolBtn3->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::SaveFill, 16));
+    toolBtn3->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::SaveFill, 16));
     toolBtn3->setToolTip("保存");
     
     toolButtonLayout->addWidget(toolButtonLabel);
@@ -97,10 +97,10 @@ void QtWidgetSample::addWidgetSamples() {
     radioButtonLabel->setMinimumWidth(120);
     
     QRadioButton* radioBtn1 = new QRadioButton("选项1");
-    radioBtn1->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::CheckboxCircleFill, 16));
+    radioBtn1->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::CheckboxCircleFill, 16));
     
     QRadioButton* radioBtn2 = new QRadioButton("选项2");
-    radioBtn2->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::CheckboxCircleLine, 16));
+    radioBtn2->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::CheckboxCircleLine, 16));
     
     radioButtonLayout->addWidget(radioButtonLabel);
     radioButtonLayout->addWidget(radioBtn1);
@@ -113,10 +113,10 @@ void QtWidgetSample::addWidgetSamples() {
     checkBoxLabel->setMinimumWidth(120);
     
     QCheckBox* checkBox1 = new QCheckBox("选项A");
-    checkBox1->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::CheckboxFill, 16));
+    checkBox1->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::CheckboxFill, 16));
     
     QCheckBox* checkBox2 = new QCheckBox("选项B");
-    checkBox2->setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::CheckboxLine, 16));
+    checkBox2->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::CheckboxLine, 16));
     
     checkBoxLayout->addWidget(checkBoxLabel);
     checkBoxLayout->addWidget(checkBox1);
@@ -137,9 +137,9 @@ void QtWidgetSample::addWidgetSamples() {
     comboBoxLabel->setMinimumWidth(120);
     
     QComboBox* comboBox = new QComboBox();
-    comboBox->addItem(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::UserFill, 16), "用户");
-    comboBox->addItem(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::GroupFill, 16), "群组");
-    comboBox->addItem(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::AdminFill, 16), "管理员");
+    comboBox->addItem(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::UserFill, 16), "用户");
+    comboBox->addItem(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::GroupFill, 16), "群组");
+    comboBox->addItem(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::AdminFill, 16), "管理员");
     
     comboBoxLayout->addWidget(comboBoxLabel);
     comboBoxLayout->addWidget(comboBox);
@@ -152,9 +152,9 @@ void QtWidgetSample::addWidgetSamples() {
     QVBoxLayout* tabLayout = new QVBoxLayout(tabGroup);
     
     QTabBar* tabBar = new QTabBar();
-    tabBar->addTab(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::Home4Fill, 16), "首页");
-    tabBar->addTab(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::Settings3Fill, 16), "设置");
-    tabBar->addTab(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::UserFill, 16), "用户");
+    tabBar->addTab(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::Home4Fill, 16), "首页");
+    tabBar->addTab(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::Settings3Fill, 16), "设置");
+    tabBar->addTab(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::UserFill, 16), "用户");
     
     tabLayout->addWidget(tabBar);
     
@@ -163,13 +163,13 @@ void QtWidgetSample::addWidgetSamples() {
     QVBoxLayout* toolbarLayout = new QVBoxLayout(toolbarGroup);
     
     QToolBar* toolbar = new QToolBar();
-    toolbar->addAction(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::FileAddFill, 16), "新建");
-    toolbar->addAction(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::FolderOpenFill, 16), "打开");
-    toolbar->addAction(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::SaveFill, 16), "保存");
+    toolbar->addAction(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::FileAddFill, 16), "新建");
+    toolbar->addAction(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::FolderOpenFill, 16), "打开");
+    toolbar->addAction(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::SaveFill, 16), "保存");
     toolbar->addSeparator();
-    toolbar->addAction(QtIcons::QtIcons::lucideIcon(QtIcons::Lucide::Icon::ClipboardCheck, 16), "剪切");
-    toolbar->addAction(QtIcons::QtIcons::lucideIcon(QtIcons::Lucide::Icon::ClipboardCopy, 16), "复制");
-    toolbar->addAction(QtIcons::QtIcons::lucideIcon(QtIcons::Lucide::Icon::ClipboardPaste, 16), "粘贴");
+    toolbar->addAction(QIconKit::QIconKit::lucideIcon(QIconKit::Lucide::Icon::ClipboardCheck, 16), "剪切");
+    toolbar->addAction(QIconKit::QIconKit::lucideIcon(QIconKit::Lucide::Icon::ClipboardCopy, 16), "复制");
+    toolbar->addAction(QIconKit::QIconKit::lucideIcon(QIconKit::Lucide::Icon::ClipboardPaste, 16), "粘贴");
     
     toolbarLayout->addWidget(toolbar);
     
@@ -183,27 +183,27 @@ void QtWidgetSample::addWidgetSamples() {
     
     QTreeWidgetItem* rootItem = new QTreeWidgetItem(treeWidget);
     rootItem->setText(0, "项目");
-    rootItem->setIcon(0, QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::FolderFill, 16));
+    rootItem->setIcon(0, QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::FolderFill, 16));
     
     QTreeWidgetItem* srcItem = new QTreeWidgetItem(rootItem);
     srcItem->setText(0, "源代码");
-    srcItem->setIcon(0, QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::FolderFill, 16));
+    srcItem->setIcon(0, QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::FolderFill, 16));
     
     QTreeWidgetItem* fileItem1 = new QTreeWidgetItem(srcItem);
     fileItem1->setText(0, "main.cpp");
-    fileItem1->setIcon(0, QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::FileFill, 16));
+    fileItem1->setIcon(0, QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::FileFill, 16));
     
     QTreeWidgetItem* fileItem2 = new QTreeWidgetItem(srcItem);
     fileItem2->setText(0, "widget.cpp");
-    fileItem2->setIcon(0, QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::FileFill, 16));
+    fileItem2->setIcon(0, QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::FileFill, 16));
     
     QTreeWidgetItem* resItem = new QTreeWidgetItem(rootItem);
     resItem->setText(0, "资源");
-    resItem->setIcon(0, QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::FolderFill, 16));
+    resItem->setIcon(0, QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::FolderFill, 16));
     
     QTreeWidgetItem* imgItem = new QTreeWidgetItem(resItem);
     imgItem->setText(0, "logo.png");
-    imgItem->setIcon(0, QtIcons::QtIcons::remixIcon(QtIcons::Remix::Icon::ImageFill, 16));
+    imgItem->setIcon(0, QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::ImageFill, 16));
     
     treeWidget->expandAll();
     treeLayout->addWidget(treeWidget);

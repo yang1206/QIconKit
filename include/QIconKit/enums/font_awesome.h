@@ -1,13 +1,13 @@
 #ifndef FONTAWESOME_ICONS_H
 #define FONTAWESOME_ICONS_H
 
-#include "QtIcons/QtIcons_export.h"
+#include "QIconKit/QIconKit_export.h"
 #include <QtCore/qobjectdefs.h>
 #include <QMetaType>
 
-namespace QtIcons {
+namespace QIconKit {
 namespace FontAwesome {
-Q_NAMESPACE_EXPORT(QTICONS_EXPORT)
+Q_NAMESPACE_EXPORT(QICONKIT_EXPORT)
 enum Icon {
         None = 0x0,
         Broom = 0xe800,

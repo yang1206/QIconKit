@@ -1,17 +1,16 @@
-# QtIcons
+# QIconKit
 
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
 ![Qt](https://img.shields.io/badge/Qt-5%2F6-green.svg)
 
-QtIcons 是一个简单易用的 Qt 图标库，为您的 Qt 应用程序提供丰富的图标集合。该库支持多种流行的图标集，包括 Material Design、Remix、Lucide 和 Font Awesome 等，让您可以轻松地为应用添加现代化的图标。
+QIconKit 是一个简单易用的 Qt 图标库，为您的 Qt 应用程序提供丰富的图标集合。该库支持多种流行的图标集，包括 Material Design、Remix、Lucide 和 Font Awesome 等，让您可以轻松地为应用添加现代化的图标。
 
 ## 特性
 
 - 🎨 **多种图标集合**：Material Design、Remix Icon、Lucide 和 Font Awesome
-- 🌈 **多种样式变体**：Material Icons 支持 Filled、Outlined、Rounded、Sharp 和 TwoTone 等变体
+- 🌈 **多种样式变体**：Material Icons 支持 Filled、Outlined、Rounded、Sharp 等变体
 - 🔄 **动态颜色**：可以轻松更改图标颜色
-- 💡 **双色支持**：支持 Material Design 的双色图标效果
 - 🔍 **高 DPI 支持**：图标在高分辨率显示器上也能保持清晰
 - 🧩 **简单集成**：易于集成到 Qt 项目中，支持 CMake
 
@@ -22,7 +21,6 @@ QtIcons 是一个简单易用的 Qt 图标库，为您的 Qt 应用程序提供�
 - **Outlined**: 轮廓线样式
 - **Rounded**: 圆角样式
 - **Sharp**: 尖角样式
-- **TwoTone**: 双色样式
 
 ### Remix Icons
 现代风格的图标集，提供了丰富的图标选择 
@@ -124,18 +122,6 @@ button.show();
 button.setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Home, 24, QColor(0, 120, 215)));
 ```
 
-### 使用双色图标 (Material Design)
-
-```cpp
-// 设置双色图标，带有主要颜色和次要颜色
-QIcon twoToneIcon = QtIcons::QtIcons::materialTwoToneIcon(
-    QtIcons::Material::TwoTone::Favorite,  // 图标
-    32,                                    // 大小
-    QColor(0, 120, 215),                  // 主要颜色
-    QColor(0, 0, 0, 38)                   // 次要颜色 (带透明度)
-);
-button.setIcon(twoToneIcon);
-```
 
 ### 各图标类型示例
 
@@ -202,13 +188,6 @@ private:
    - 其他图标默认大小为 16px
    - 可以通过参数自定义大小
 
-2. 双色图标
-   - 目前仅 Material TwoTone 图标支持双色效果
-   - 默认次要颜色为半透明黑色 (0, 0, 0, 38)
-
-3. 高 DPI 支持
-   - 图标会根据设备像素比例自动缩放
-   - 建议使用矢量图标以获得最佳效果
 
 ## 许可证
 

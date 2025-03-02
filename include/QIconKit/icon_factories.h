@@ -11,10 +11,10 @@
 #include "enums/font_awesome.h"
 #include "enums/material_icons.h"
 
-namespace QtIcons {
+namespace QIconKit {
 
 // Remix图标工厂
-class QTICONS_EXPORT RemixIconFactory : public FontIconProvider {
+class QICONKIT_EXPORT RemixIconFactory : public FontIconProvider {
 public:
     static RemixIconFactory& instance();
 
@@ -25,7 +25,7 @@ private:
     RemixIconFactory();
 };
 
-class QTICONS_EXPORT LucideIconFactory : public FontIconProvider {
+class QICONKIT_EXPORT LucideIconFactory : public FontIconProvider {
 public:
     static LucideIconFactory& instance();
 
@@ -48,7 +48,7 @@ private:
     FontAwesomeIconFactory();
 };
 
-class QTICONS_EXPORT MaterialIconFactory : public FontIconProvider {
+class QICONKIT_EXPORT MaterialIconFactory : public FontIconProvider {
 public:
     static MaterialIconFactory& instance(Material::Style style = Material::Style::Filled);
 
@@ -57,10 +57,9 @@ public:
     QIcon outlinedIcon(Material::Outlined::Icon icon, int size, const QColor& color) const;
     QIcon roundedIcon(Material::Rounded::Icon icon, int size, const QColor& color) const;
     QIcon sharpIcon(Material::Sharp::Icon icon, int size, const QColor& color) const;
-    QIcon twoToneIcon(Material::TwoTone::Icon icon, int size, const QColor& color, const QColor& secondaryColor = QColor(0, 0, 0, 38)) const;
 
     // 通用方法 - 根据变体类型获取图标
-    QIcon icon(int iconCode, Material::Style style, int size, const QColor& color, const QColor& secondaryColor = QColor(0, 0, 0, 38)) const;
+    QIcon icon(int iconCode, Material::Style style, int size, const QColor& color) const;
 
 private:
     explicit MaterialIconFactory(Material::Style style);

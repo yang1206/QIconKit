@@ -2,9 +2,9 @@
 // Created by Yang1206 on 2025/3/2.
 //
 
-#include "QtIcons/icon_manager.h"
+#include "QIconKit/icon_manager.h"
 
-namespace QtIcons {
+namespace QIconKit {
 
 IconManager& IconManager::instance() {
     static IconManager instance;

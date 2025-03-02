@@ -6,7 +6,6 @@
         <file>fonts/MaterialIconsOutlined-Regular.otf</file>
         <file>fonts/MaterialIconsRound-Regular.otf</file>
         <file>fonts/MaterialIconsSharp-Regular.otf</file>
-        <file>fonts/MaterialIconsTwoTone-Regular.otf</file>
         <file>fonts/Lucide.ttf</file>
     </qresource>
 </RCC>

@@ -9,9 +9,9 @@
 #include <QMap>
 #include <memory>
 
-namespace QtIcons {
+namespace QIconKit {
 
-class QTICONS_EXPORT IconManager {
+class QICONKIT_EXPORT IconManager {
 public:
     static IconManager& instance();
 

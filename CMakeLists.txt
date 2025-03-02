@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(QtIcons
+project(QIconKit
         VERSION 1.0.0
         DESCRIPTION "A Qt Icon library"
-        HOMEPAGE_URL "https://github.com/yang1206/qticons"
+        HOMEPAGE_URL "https://github.com/yang1206/QIconKit"
         LANGUAGES CXX
 )
 
 # 设置CMake选项
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
-option(QtICON_BUILD_EXAMPLES "Build QtIcons examples" ON)
+option(QIconKit_BUILD_EXAMPLES "Build QIconKit examples" ON)
 
 # 设置CMake变量
 set(CMAKE_CXX_STANDARD 17)
@@ -30,23 +30,23 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 # 收集源文件 - 修改方式收集所有需要的文件
-file(GLOB_RECURSE QtIcons_SOURCES
+file(GLOB_RECURSE QIconKit_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
 )
 
-file(GLOB_RECURSE QtIcons_HEADERS
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/QtIcons/*.h"
+file(GLOB_RECURSE QIconKit_HEADERS
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/QIconKit/*.h"
 )
 
-set(QtIcons_RESOURCES
+set(QIconKit_RESOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/resources/icons.qrc"
-        include/QtIcons/enums/font_awesome.h
+        include/QIconKit/enums/font_awesome.h
 )
 # # 明确列出带有Q_OBJECT宏的头文件
 # set(WRAPPED_HEADER_FILES
-#         "${CMAKE_CURRENT_SOURCE_DIR}/include/QtIcons/charts/base/gl_widget.h"
-#         "${CMAKE_CURRENT_SOURCE_DIR}/include/QtIcons/utils/orbit_controls.h"
+#         "${CMAKE_CURRENT_SOURCE_DIR}/include/QIconKit/charts/base/gl_widget.h"
+#         "${CMAKE_CURRENT_SOURCE_DIR}/include/QIconKit/utils/orbit_controls.h"
 # )
 
 # 为带有Q_OBJECT的类创建专用实现文件
@@ -62,48 +62,48 @@ set(QtIcons_RESOURCES
 # endforeach()
 
 # 添加到源文件列表
-# list(APPEND QtIcons_SOURCES ${MOC_SOURCES})
+# list(APPEND QIconKit_SOURCES ${MOC_SOURCES})
 
 # 创建库目标
 if (BUILD_SHARED_LIBS)
-    add_library(QtIcons SHARED ${QtIcons_SOURCES} ${QtIcons_HEADERS} ${QtIcons_RESOURCES})
-    target_compile_definitions(QtIcons
+    add_library(QIconKit SHARED ${QIconKit_SOURCES} ${QIconKit_HEADERS} ${QIconKit_RESOURCES})
+    target_compile_definitions(QIconKit
             PRIVATE
-            QtIcons_EXPORTS  # 确保使用与export.h匹配的宏名称
-            QtIcons_EXPORTS  # 添加这个以确保兼容性
+            QIconKit_EXPORTS  # 确保使用与export.h匹配的宏名称
+            QIconKit_EXPORTS  # 添加这个以确保兼容性
             PUBLIC
-            QtIcons_SHARED
+            QIconKit_SHARED
             PUBLIC
             QT_SHARED
     )
     if(MSVC)
-        set_target_properties(QtIcons PROPERTIES
+        set_target_properties(QIconKit PROPERTIES
                 WINDOWS_EXPORT_ALL_SYMBOLS ON
         )
     endif()
 else ()
-    add_library(QtIcons STATIC ${QtIcons_SOURCES} ${QtIcons_HEADERS}
+    add_library(QIconKit STATIC ${QIconKit_SOURCES} ${QIconKit_HEADERS}
     )
 endif ()
 
-set_target_properties(QtIcons PROPERTIES
+set_target_properties(QIconKit PROPERTIES
         AUTOMOC ON
         AUTORCC ON
         AUTOUIC ON
 )
 
 
-add_library(QtIcons::QtIcons ALIAS QtIcons)
+add_library(QIconKit::QIconKit ALIAS QIconKit)
 
 # 生成导出头文件
 include(GenerateExportHeader)
-generate_export_header(QtIcons
-        BASE_NAME QtIcons
-        EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/include/QtIcons/QtIcons_export.h
+generate_export_header(QIconKit
+        BASE_NAME QIconKit
+        EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/include/QIconKit/QIconKit_export.h
 )
 
 # 设置目标属性
-target_include_directories(QtIcons
+target_include_directories(QIconKit
         PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
@@ -115,23 +115,23 @@ target_include_directories(QtIcons
 
 install(
         FILES
-        ${CMAKE_CURRENT_BINARY_DIR}/include/QtIcons/QtIcons_export.h
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/QtIcons
+        ${CMAKE_CURRENT_BINARY_DIR}/include/QIconKit/QIconKit_export.h
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/QIconKit
 )
 
 # 设置编译选项
-target_compile_features(QtIcons PUBLIC cxx_std_20)
+target_compile_features(QIconKit PUBLIC cxx_std_20)
 
 # 编译器特定配置
 if (MSVC)
-    target_compile_options(QtIcons
+    target_compile_options(QIconKit
             PRIVATE
             /W4             # 警告级别
             /Zc:__cplusplus # 启用正确的 __cplusplus 宏
             /utf-8          # 使用 UTF-8 编码
     )
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(QtIcons
+    target_compile_options(QIconKit
             PRIVATE
             -Wall
             -Wextra
@@ -141,7 +141,7 @@ elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif ()
 
 # 设置调试信息
-target_compile_options(QtIcons PRIVATE
+target_compile_options(QIconKit PRIVATE
         $<$<CONFIG:Debug>:
         $<$<CXX_COMPILER_ID:MSVC>:/Zi>
         $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-g>
@@ -149,7 +149,7 @@ target_compile_options(QtIcons PRIVATE
 )
 
 # 链接Qt库
-target_link_libraries(QtIcons
+target_link_libraries(QIconKit
         PUBLIC
         Qt${QT_VERSION_MAJOR}::Widgets
 )
@@ -161,14 +161,14 @@ include(CMakePackageConfigHelpers)
 
 # 安装头文件
 install(
-        DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/QtIcons
+        DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/QIconKit
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
 # 安装库文件
 install(
-        TARGETS QtIcons
-        EXPORT QtIconsTargets
+        TARGETS QIconKit
+        EXPORT QIconKitTargets
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
@@ -177,32 +177,32 @@ install(
 
 # 导出目标
 install(
-        EXPORT QtIconsTargets
-        FILE QtIconsTargets.cmake
-        NAMESPACE QtIcons::
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/QtIcons
+        EXPORT QIconKitTargets
+        FILE QIconKitTargets.cmake
+        NAMESPACE QIconKit::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/QIconKit
 )
 
 # 生成版本文件
 write_basic_package_version_file(
-        "${CMAKE_CURRENT_BINARY_DIR}/QtIconsConfigVersion.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/QIconKitConfigVersion.cmake"
         VERSION ${PROJECT_VERSION}
         COMPATIBILITY SameMajorVersion
 )
 
 # 配置Config文件
 configure_package_config_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/QtIconsConfig.cmake.in"
-        "${CMAKE_CURRENT_BINARY_DIR}/QtIconsConfig.cmake"
-        INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/QtIcons
+        "${CMAKE_CURRENT_SOURCE_DIR}/cmake/QIconKitConfig.cmake.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/QIconKitConfig.cmake"
+        INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/QIconKit
 )
 
 # 安装配置文件
 install(
         FILES
-        "${CMAKE_CURRENT_BINARY_DIR}/QtIconsConfig.cmake"
-        "${CMAKE_CURRENT_BINARY_DIR}/QtIconsConfigVersion.cmake"
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/QtIcons
+        "${CMAKE_CURRENT_BINARY_DIR}/QIconKitConfig.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/QIconKitConfigVersion.cmake"
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/QIconKit
 )
 
 # 构建示例

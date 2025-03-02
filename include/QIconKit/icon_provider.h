@@ -8,11 +8,11 @@
 #include <QIcon>
 #include <QString>
 #include <QColor>
-#include "QtIcons/QtIcons_export.h"
+#include "QIconKit/QIconKit_export.h"
 
-namespace QtIcons {
+namespace QIconKit {
 
-class QTICONS_EXPORT IconProvider {
+class QICONKIT_EXPORT IconProvider {
 public:
     virtual ~IconProvider() = default;
 

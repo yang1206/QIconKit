@@ -1,7 +1,7 @@
 #include "iconbrowser.h"
 #include <QVBoxLayout>
 #include <QMetaEnum>
-#include <QtIcons/qticons.h>
+#include <QIconKit/qiconkit.h>
 
 IconBrowser::IconBrowser(QWidget* parent) : QWidget(parent) {
     setupUI();
@@ -41,7 +41,6 @@ void IconBrowser::setupUI() {
     m_materialOutlinedIconGrid = new IconGrid();
     m_materialRoundedIconGrid = new IconGrid();
     m_materialSharpIconGrid = new IconGrid();
-    m_materialTwoToneIconGrid = new TwoToneIconGrid();
 
     // 创建Material图标标签页
     QTabWidget* materialTabWidget = new QTabWidget();
@@ -49,7 +48,6 @@ void IconBrowser::setupUI() {
     materialTabWidget->addTab(m_materialOutlinedIconGrid, "轮廓");
     materialTabWidget->addTab(m_materialRoundedIconGrid, "圆角");
     materialTabWidget->addTab(m_materialSharpIconGrid, "尖角");
-    materialTabWidget->addTab(m_materialTwoToneIconGrid, "双色");
 
     m_tabWidget->addTab(materialTabWidget, "Material Icon");
     
@@ -63,7 +61,7 @@ void IconBrowser::setupRemixIcons() {
     // 使用Qt元对象系统获取枚举信息
     QMap<int, QString> iconMap;
     
-    const QMetaEnum metaEnum = QMetaEnum::fromType<QtIcons::Remix::Icon>();
+    const QMetaEnum metaEnum = QMetaEnum::fromType<QIconKit::Remix::Icon>();
     for (int i = 0; i < metaEnum.keyCount(); ++i) {
         const char* key = metaEnum.key(i);
         int value = metaEnum.value(i);
@@ -72,7 +70,7 @@ void IconBrowser::setupRemixIcons() {
     
     // 设置图标提供者函数
     auto iconProvider = [](int iconCode, int size, const QColor& color) -> QIcon {
-        return QtIcons::QtIcons::remixIcon(static_cast<QtIcons::Remix::Icon>(iconCode), size, color);
+        return QIconKit::QIconKit::remixIcon(static_cast<QIconKit::Remix::Icon>(iconCode), size, color);
     };
     
     // 设置图标
@@ -84,7 +82,7 @@ void IconBrowser::setupLucideIcons() {
     // 使用Qt元对象系统获取枚举信息
     QMap<int, QString> iconMap;
 
-    const QMetaEnum metaEnum = QMetaEnum::fromType<QtIcons::Lucide::Icon>();
+    const QMetaEnum metaEnum = QMetaEnum::fromType<QIconKit::Lucide::Icon>();
 
     if (!metaEnum.isValid()) {
         qWarning() << "无法获取Lucide图标元对象信息!";
@@ -98,7 +96,7 @@ void IconBrowser::setupLucideIcons() {
 
     // 设置图标提供者函数
     auto iconProvider = [](int iconCode, int size, const QColor& color) -> QIcon {
-        return QtIcons::QtIcons::lucideIcon(static_cast<QtIcons::Lucide::Icon>(iconCode), size, color);
+        return QIconKit::QIconKit::lucideIcon(static_cast<QIconKit::Lucide::Icon>(iconCode), size, color);
     };
 
     // 设置图标
@@ -109,7 +107,7 @@ void IconBrowser::setupFontAwesomeIcons() {
     // 使用Qt元对象系统获取枚举信息
     QMap<int, QString> iconMap;
 
-    const QMetaEnum metaEnum = QMetaEnum::fromType<QtIcons::FontAwesome::Icon>();
+    const QMetaEnum metaEnum = QMetaEnum::fromType<QIconKit::FontAwesome::Icon>();
 
     if (!metaEnum.isValid()) {
         qWarning() << "无法获取FontAwesome图标元对象信息!";
@@ -123,7 +121,7 @@ void IconBrowser::setupFontAwesomeIcons() {
 
     // 设置图标提供者函数
     auto iconProvider = [](int iconCode, int size, const QColor& color) -> QIcon {
-        return QtIcons::QtIcons::fontAwesomeIcon(static_cast<QtIcons::FontAwesome::Icon>(iconCode), size, color);
+        return QIconKit::QIconKit::fontAwesomeIcon(static_cast<QIconKit::FontAwesome::Icon>(iconCode), size, color);
     };
 
     // 设置图标
@@ -135,7 +133,7 @@ void IconBrowser::setupMaterialIcons() {
     // 填充样式
     {
         QMap<int, QString> iconMap;
-        const QMetaEnum metaEnum = QMetaEnum::fromType<QtIcons::Material::Filled::Icon>();
+        const QMetaEnum metaEnum = QMetaEnum::fromType<QIconKit::Material::Filled::Icon>();
         if (metaEnum.isValid()) {
             for (int i = 0; i < metaEnum.keyCount(); ++i) {
                 const char* key = metaEnum.key(i);
@@ -144,8 +142,8 @@ void IconBrowser::setupMaterialIcons() {
             }
 
             auto iconProvider = [](int iconCode, int size, const QColor& color) -> QIcon {
-                return QtIcons::QtIcons::materialFilledIcon(
-                    static_cast<QtIcons::Material::Filled::Icon>(iconCode), size, color);
+                return QIconKit::QIconKit::materialFilledIcon(
+                    static_cast<QIconKit::Material::Filled::Icon>(iconCode), size, color);
             };
 
             m_materialFilledIconGrid->setIcons(iconMap, iconProvider);
@@ -157,7 +155,7 @@ void IconBrowser::setupMaterialIcons() {
     // 轮廓样式
     {
         QMap<int, QString> iconMap;
-        const QMetaEnum metaEnum = QMetaEnum::fromType<QtIcons::Material::Outlined::Icon>();
+        const QMetaEnum metaEnum = QMetaEnum::fromType<QIconKit::Material::Outlined::Icon>();
         if (metaEnum.isValid()) {
             for (int i = 0; i < metaEnum.keyCount(); ++i) {
                 const char* key = metaEnum.key(i);
@@ -166,8 +164,8 @@ void IconBrowser::setupMaterialIcons() {
             }
 
             auto iconProvider = [](int iconCode, int size, const QColor& color) -> QIcon {
-                return QtIcons::QtIcons::materialOutlinedIcon(
-                    static_cast<QtIcons::Material::Outlined::Icon>(iconCode), size, color);
+                return QIconKit::QIconKit::materialOutlinedIcon(
+                    static_cast<QIconKit::Material::Outlined::Icon>(iconCode), size, color);
             };
 
             m_materialOutlinedIconGrid->setIcons(iconMap, iconProvider);
@@ -179,7 +177,7 @@ void IconBrowser::setupMaterialIcons() {
     // 圆角样式
     {
         QMap<int, QString> iconMap;
-        const QMetaEnum metaEnum = QMetaEnum::fromType<QtIcons::Material::Rounded::Icon>();
+        const QMetaEnum metaEnum = QMetaEnum::fromType<QIconKit::Material::Rounded::Icon>();
         if (metaEnum.isValid()) {
             for (int i = 0; i < metaEnum.keyCount(); ++i) {
                 const char* key = metaEnum.key(i);
@@ -188,8 +186,8 @@ void IconBrowser::setupMaterialIcons() {
             }
 
             auto iconProvider = [](int iconCode, int size, const QColor& color) -> QIcon {
-                return QtIcons::QtIcons::materialRoundedIcon(
-                    static_cast<QtIcons::Material::Rounded::Icon>(iconCode), size, color);
+                return QIconKit::QIconKit::materialRoundedIcon(
+                    static_cast<QIconKit::Material::Rounded::Icon>(iconCode), size, color);
             };
 
             m_materialRoundedIconGrid->setIcons(iconMap, iconProvider);
@@ -201,7 +199,7 @@ void IconBrowser::setupMaterialIcons() {
     // 尖角样式
     {
         QMap<int, QString> iconMap;
-        const QMetaEnum metaEnum = QMetaEnum::fromType<QtIcons::Material::Sharp::Icon>();
+        const QMetaEnum metaEnum = QMetaEnum::fromType<QIconKit::Material::Sharp::Icon>();
         if (metaEnum.isValid()) {
             for (int i = 0; i < metaEnum.keyCount(); ++i) {
                 const char* key = metaEnum.key(i);
@@ -210,38 +208,13 @@ void IconBrowser::setupMaterialIcons() {
             }
 
             auto iconProvider = [](int iconCode, int size, const QColor& color) -> QIcon {
-                return QtIcons::QtIcons::materialSharpIcon(
-                    static_cast<QtIcons::Material::Sharp::Icon>(iconCode), size, color);
+                return QIconKit::QIconKit::materialSharpIcon(
+                    static_cast<QIconKit::Material::Sharp::Icon>(iconCode), size, color);
             };
 
             m_materialSharpIconGrid->setIcons(iconMap, iconProvider);
         } else {
             qWarning() << "无法获取Material Sharp图标元对象信息!";
-        }
-    }
-
-    // 双色样式
-    {
-        QMap<int, QString> iconMap;
-        const QMetaEnum metaEnum = QMetaEnum::fromType<QtIcons::Material::TwoTone::Icon>();
-        if (metaEnum.isValid()) {
-            for (int i = 0; i < metaEnum.keyCount(); ++i) {
-                const char* key = metaEnum.key(i);
-                int value = metaEnum.value(i);
-                iconMap[value] = QString(key);
-            }
-
-            auto iconProvider = [](int iconCode, int size, const QColor& primaryColor, const QColor& secondaryColor) -> QIcon {
-                return QtIcons::QtIcons::materialTwoToneIcon(
-                    static_cast<QtIcons::Material::TwoTone::Icon>(iconCode),
-                    size,
-                    primaryColor,
-                    secondaryColor);
-            };
-
-            m_materialTwoToneIconGrid->setTwoToneIcons(iconMap, iconProvider);
-        } else {
-            qWarning() << "无法获取Material TwoTone图标元对象信息!";
         }
     }
 }

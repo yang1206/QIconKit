@@ -2,11 +2,11 @@
 // Created by Yang1206 on 2025/3/2.
 //
 
-#include "QtIcons/icon_factories.h"
+#include "QIconKit/icon_factories.h"
 #include <QMap>
 #include <QtCore/qcoreapplication.h>
 
-namespace QtIcons {
+namespace QIconKit {
 
 // RemixIcon工厂实现
 RemixIconFactory& RemixIconFactory::instance() {
@@ -86,10 +86,6 @@ MaterialIconFactory::MaterialIconFactory(Material::Style style):FontIconProvider
             fontFile = ":/fonts/fonts/MaterialIconsSharp-Regular.otf";
             fontFamily = "Material Icons Sharp";
             break;
-        case Material::Style::TwoTone:
-            fontFile = ":/fonts/fonts/MaterialIconsTwoTone-Regular.otf";
-            fontFamily = "Material Icons Two Tone";
-            break;
     }
 
     // 初始化基类
@@ -113,19 +109,11 @@ QIcon MaterialIconFactory::sharpIcon(Material::Sharp::Icon icon, int size, const
     return iconFromCode(static_cast<int>(icon), size, color);
 }
 
-QIcon MaterialIconFactory::twoToneIcon(Material::TwoTone::Icon icon, int size, const QColor& color, const QColor& secondaryColor) const {
-    return renderTwoToneIcon(static_cast<int>(icon), size, color, secondaryColor);
-}
 
-QIcon MaterialIconFactory::icon(int iconCode, Material::Style style, int size, const QColor& color, const QColor& secondaryColor) const {
+QIcon MaterialIconFactory::icon(int iconCode, Material::Style style, int size, const QColor& color) const {
     // 如果请求的样式与当前实例的样式不匹配，则获取正确的实例
     if (style != m_style) {
-        return instance(style).icon(iconCode, style, size, color, secondaryColor);
-    }
-
-    // 特殊处理双色图标
-    if (style == Material::Style::TwoTone) {
-        return renderTwoToneIcon(iconCode, size, color, secondaryColor);
+        return instance(style).icon(iconCode, style, size, color);
     }
 
     return iconFromCode(iconCode, size, color);

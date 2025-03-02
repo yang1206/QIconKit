@@ -1,13 +1,13 @@
 #ifndef LUCIDE_ICONS_H
 #define LUCIDE_ICONS_H
 
-#include "QtIcons/QtIcons_export.h"
+#include "QIconKit/QIconKit_export.h"
 #include <QtCore/qobjectdefs.h>
 #include <QMetaType>
 
-namespace QtIcons {
+namespace QIconKit {
 namespace Lucide {
-Q_NAMESPACE_EXPORT(QTICONS_EXPORT)
+Q_NAMESPACE_EXPORT(QICONKIT_EXPORT)
 enum Icon {
     AArrowDown = 0xe589,
     AArrowUp = 0xe58a,
