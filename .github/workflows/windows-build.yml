@@ -1,0 +1,49 @@
+name: Windows Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  windows-build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+
+      - name: Install build tools
+        run: |
+          choco install ninja cmake
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '6.8.*'
+          arch: win64_msvc2022_64
+          cache: true
+
+      - name: Setup MSVC Environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+
+
+      - name: Configure
+        env:
+          QT_MSVC_DIR: ${{ env.Qt6_DIR }}
+        run: cmake --preset windows-msvc
+
+      - name: Build
+        run: cmake --build --preset msvc-release

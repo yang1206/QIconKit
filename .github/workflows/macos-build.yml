@@ -1,0 +1,43 @@
+name: macOS Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  macos-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install build tools
+        run: |
+          brew install ninja cmake
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '6.8.*'
+          arch: clang_64
+          cache: true
+
+
+      - name: Configure
+        env:
+          Qt6_DIR: ${{ env.Qt6_DIR }}
+        run: |
+          cmake --preset macos
+
+      - name: Build
+        run: |
+          cmake --build --preset macos-release
