@@ -51,6 +51,8 @@ protected:
     QLabel* m_countLabel;
     QMap<QString, IconButton*> m_iconButtons;
     std::function<QIcon(int, int, const QColor&)> m_iconProvider;
+
+    QTimer* m_searchTimer;
 };
 
 #endif // ICONGRID_H 

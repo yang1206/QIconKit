@@ -6,6 +6,8 @@
       "hidden": true,
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
+        "CMAKE_POSITION_INDEPENDENT_CODE": "ON",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON" 
       },
       "warnings": {
         "dev": false
