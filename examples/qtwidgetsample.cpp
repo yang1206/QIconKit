@@ -54,7 +54,9 @@ void QtWidgetSample::addWidgetSamples() {
     pushButtonLabel->setMinimumWidth(120);
     
     QPushButton* btn1 = new QPushButton("账户");
-    btn1->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::AccountCircleFill, 16));
+    btn1->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::AccountCircleFill, 30));
+    btn1->setIconSize(QSize(30, 30));
+    btn1->setFixedSize(100, 60);
     
     QPushButton* btn2 = new QPushButton("设置");
     btn2->setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::Settings4Fill, 16));

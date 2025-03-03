@@ -206,6 +206,6 @@ install(
 )
 
 # 构建示例
-if (QtICON_BUILD_EXAMPLES)
+if (QIconKit_BUILD_EXAMPLES)
     add_subdirectory(examples)
 endif ()
