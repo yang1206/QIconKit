@@ -14,10 +14,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     // 添加图标浏览器标签页
     IconBrowser* iconBrowser = new IconBrowser();
-    m_tabWidget->addTab(iconBrowser, QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::GridFill, 16), "图标浏览器");
+    m_tabWidget->addTab(iconBrowser, RemixIcon(GridFill, 16), "图标浏览器");
 
     // 设置窗口属性
     setWindowTitle("QIconKit by Yang1206");
-    setWindowIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Icon::AppsLine, 32));
+    setWindowIcon(MaterialOutlinedIcon(Home, 32));
     resize(900, 700);
 }

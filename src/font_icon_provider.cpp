@@ -61,7 +61,7 @@ QIcon FontIconProvider::iconFromCode(int iconCode, int size, const QColor& color
     QIcon icon = renderIcon(iconCode, size, color);
 
     // 将渲染的图标添加到缓存
-    IconCache::instance().getIcon(m_fontFamily, iconCode, size, color) = icon;
+    IconCache::instance().addIcon(m_fontFamily, iconCode, size, color, icon);
 
     return icon;
 }
@@ -85,10 +85,15 @@ QIcon FontIconProvider::renderIcon(int iconCode, int size, const QColor& color) 
     QList<int> sizes;
     // 基础尺寸
     sizes << size;
-    // 2倍尺寸 (适合普通高DPI)
-    sizes << size * 2;
-    // 4倍尺寸 (适合4K屏幕)
-    sizes << size * 4;
+    // 只有当设备像素比大于1.0时才生成2x尺寸
+    if (dpr > 1.0) {
+        sizes << size * 2;
+    }
+
+    // 只有当设备像素比大于2.0时才生成4x尺寸
+    if (dpr > 2.0) {
+        sizes << size * 4;
+    }
 
     for (int pixelSize : sizes) {
         // 创建足够大的图像以适应高分辨率

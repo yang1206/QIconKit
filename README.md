@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
 
 // 创建一个带有 Material Design 图标的按钮
 QPushButton button;
-button.setIcon(QIconKit::QIconKit::materialFilledIcon(QIconKit::Material::Filled::Home));
+button.setIcon(MaterialFilledIcon(Home));
 button.show();
 ```
 
@@ -119,7 +119,7 @@ button.show();
 
 ```cpp
 // 设置自定义颜色
-button.setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Home, 24, QColor(0, 120, 215)));
+button.setIcon(MaterialFilledIcon(Home, 32, Qt::red));
 ```
 
 
@@ -127,20 +127,20 @@ button.setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Home, 24, QColor(0
 
 ```cpp
 // Material Design 图标
-button1.setIcon(QIconKit::QIconKit::materialFilledIcon(QIconKit::Material::Filled::Home));
-button2.setIcon(QIconKit::QIconKit::materialOutlinedIcon(QIconKit::Material::Outlined::Home));
-button3.setIcon(QIconKit::QIconKit::materialRoundedIcon(QIconKit::Material::Rounded::Home));
-button4.setIcon(QIconKit::QIconKit::materialSharpIcon(QIconKit::Material::Sharp::Home));
-button5.setIcon(QIconKit::QIconKit::materialTwoToneIcon(QIconKit::Material::TwoTone::Home));
+button1.setIcon(MaterialFilledIcon(Home));
+button2.setIcon(MaterialOutlinedIcon(Home));
+button3.setIcon(MaterialRoundedIcon(Home));
+button4.setIcon(MaterialSharpIcon(Home));
+
 
 // Remix 图标
-button6.setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Home));
+button6.setIcon(RemixIcon(Home));
 
 // Lucide 图标
-button7.setIcon(QIconKit::QIconKit::lucideIcon(QIconKit::Lucide::Home));
+button7.setIcon(LucideIcon(Home));
 
 // Font Awesome 图标
-button8.setIcon(QIconKit::QIconKit::fontAwesomeIcon(QIconKit::FontAwesome::Home));
+button8.setIcon(FontAwesomeIcon(Home));
 ```
 
 ## 图标浏览器

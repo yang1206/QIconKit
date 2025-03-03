@@ -45,4 +45,12 @@ public:
 
 } // namespace QtIcons
 
+#define RemixIcon(icon, ...) QIconKit::QIconKit::remixIcon(QIconKit::Remix::icon, ##__VA_ARGS__)
+#define LucideIcon(icon, ...) QIconKit::QIconKit::lucideIcon(QIconKit::Lucide::icon, ##__VA_ARGS__)
+#define FontAwesomeIcon(icon, ...) QIconKit::QIconKit::fontAwesomeIcon(QIconKit::FontAwesome::icon, ##__VA_ARGS__)
+#define MaterialFilledIcon(icon, ...) QIconKit::QIconKit::materialFilledIcon(QIconKit::Material::Filled::icon, ##__VA_ARGS__)
+#define MaterialOutlinedIcon(icon, ...) QIconKit::QIconKit::materialOutlinedIcon(QIconKit::Material::Outlined::icon, ##__VA_ARGS__)
+#define MaterialRoundedIcon(icon, ...) QIconKit::QIconKit::materialRoundedIcon(QIconKit::Material::Rounded::icon, ##__VA_ARGS__)
+#define MaterialSharpIcon(icon, ...) QIconKit::QIconKit::materialSharpIcon(QIconKit::Material::Sharp::icon, ##__VA_ARGS__)
+
 #endif //QTICONS_H

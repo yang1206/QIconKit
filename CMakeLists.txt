@@ -26,8 +26,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 # 查找依赖
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Concurrent)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Concurrent)
 
 # 收集源文件 - 修改方式收集所有需要的文件
 file(GLOB_RECURSE QIconKit_SOURCES
@@ -43,26 +43,7 @@ set(QIconKit_RESOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/resources/icons.qrc"
         include/QIconKit/enums/font_awesome.h
 )
-# # 明确列出带有Q_OBJECT宏的头文件
-# set(WRAPPED_HEADER_FILES
-#         "${CMAKE_CURRENT_SOURCE_DIR}/include/QIconKit/charts/base/gl_widget.h"
-#         "${CMAKE_CURRENT_SOURCE_DIR}/include/QIconKit/utils/orbit_controls.h"
-# )
 
-# 为带有Q_OBJECT的类创建专用实现文件
-# set(MOC_IMPLEMENTATION_DIR "${CMAKE_CURRENT_BINARY_DIR}/moc_impl")
-# file(MAKE_DIRECTORY ${MOC_IMPLEMENTATION_DIR})
-
-# set(MOC_SOURCES)
-# foreach(HEADER_PATH ${WRAPPED_HEADER_FILES})
-#     get_filename_component(HEADER_NAME ${HEADER_PATH} NAME_WE)
-#     set(IMPL_FILE "${MOC_IMPLEMENTATION_DIR}/${HEADER_NAME}_moc_impl.cpp")
-#     file(WRITE ${IMPL_FILE} "#include \"${HEADER_PATH}\"\n")
-#     list(APPEND MOC_SOURCES ${IMPL_FILE})
-# endforeach()
-
-# 添加到源文件列表
-# list(APPEND QIconKit_SOURCES ${MOC_SOURCES})
 
 # 创建库目标
 if (BUILD_SHARED_LIBS)
@@ -152,6 +133,7 @@ target_compile_options(QIconKit PRIVATE
 target_link_libraries(QIconKit
         PUBLIC
         Qt${QT_VERSION_MAJOR}::Widgets
+        Qt${QT_VERSION_MAJOR}::Concurrent
 )
 
 
