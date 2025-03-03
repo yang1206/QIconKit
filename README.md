@@ -45,21 +45,21 @@ QIconKit 是一个简单易用的 Qt 图标库，为您的 Qt 应用程序提供
 ```cmake
 include(FetchContent)
 FetchContent_Declare(
-    QtIcons
-    GIT_REPOSITORY https://github.com/yang1206/qticons.git
+    QIconKit
+    GIT_REPOSITORY https://github.com/yang1206/QIconKit.git
     GIT_TAG main
 )
-FetchContent_MakeAvailable(QtIcons)
+FetchContent_MakeAvailable(QIconKit)
 
-target_link_libraries(YourTarget PRIVATE QtIcons::QtIcons)
+target_link_libraries(YourTarget PRIVATE QIconKit::QIconKit)
 ```
 
 ### 方法 2：手动构建和安装
 
 ```bash
 # Clone 仓库
-git clone https://github.com/yang1206/qticons.git
-cd qticons
+git clone https://github.com/yang1206/QIconKit.git
+cd QIconKit
 
 # 创建构建目录
 mkdir build && cd build
@@ -77,8 +77,8 @@ cmake --install .
 然后在你的 CMakeLists.txt 中添加：
 
 ```cmake
-find_package(QtIcons REQUIRED)
-target_link_libraries(your_target PRIVATE QtIcons::QtIcons)
+find_package(QIconKit REQUIRED)
+target_link_libraries(your_target PRIVATE QIconKit::QIconKit)
 ```
 
 ## 使用方法
@@ -88,13 +88,13 @@ target_link_libraries(your_target PRIVATE QtIcons::QtIcons)
 在使用任何图标之前，需要先初始化库：
 
 ```cpp
-#include <QtIcons/qticons.h>
+#include <QIconKit/qiconkit.h>
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     
     // 初始化图标库
-    QtIcons::QtIcons::initialize();
+    QIconKit::QIconKit::initialize();
     
     // 现在可以使用图标了
     // ...
@@ -106,12 +106,12 @@ int main(int argc, char *argv[]) {
 ### 基本用法
 
 ```cpp
-#include <QtIcons/qticons.h>
+#include <QIconKit/qiconkit.h>
 #include <QPushButton>
 
 // 创建一个带有 Material Design 图标的按钮
 QPushButton button;
-button.setIcon(QtIcons::QtIcons::materialFilledIcon(QtIcons::Material::Filled::Home));
+button.setIcon(QIconKit::QIconKit::materialFilledIcon(QIconKit::Material::Filled::Home));
 button.show();
 ```
 
@@ -119,7 +119,7 @@ button.show();
 
 ```cpp
 // 设置自定义颜色
-button.setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Home, 24, QColor(0, 120, 215)));
+button.setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Home, 24, QColor(0, 120, 215)));
 ```
 
 
@@ -127,28 +127,28 @@ button.setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Home, 24, QColor(0, 1
 
 ```cpp
 // Material Design 图标
-button1.setIcon(QtIcons::QtIcons::materialFilledIcon(QtIcons::Material::Filled::Home));
-button2.setIcon(QtIcons::QtIcons::materialOutlinedIcon(QtIcons::Material::Outlined::Home));
-button3.setIcon(QtIcons::QtIcons::materialRoundedIcon(QtIcons::Material::Rounded::Home));
-button4.setIcon(QtIcons::QtIcons::materialSharpIcon(QtIcons::Material::Sharp::Home));
-button5.setIcon(QtIcons::QtIcons::materialTwoToneIcon(QtIcons::Material::TwoTone::Home));
+button1.setIcon(QIconKit::QIconKit::materialFilledIcon(QIconKit::Material::Filled::Home));
+button2.setIcon(QIconKit::QIconKit::materialOutlinedIcon(QIconKit::Material::Outlined::Home));
+button3.setIcon(QIconKit::QIconKit::materialRoundedIcon(QIconKit::Material::Rounded::Home));
+button4.setIcon(QIconKit::QIconKit::materialSharpIcon(QIconKit::Material::Sharp::Home));
+button5.setIcon(QIconKit::QIconKit::materialTwoToneIcon(QIconKit::Material::TwoTone::Home));
 
 // Remix 图标
-button6.setIcon(QtIcons::QtIcons::remixIcon(QtIcons::Remix::Home));
+button6.setIcon(QIconKit::QIconKit::remixIcon(QIconKit::Remix::Home));
 
 // Lucide 图标
-button7.setIcon(QtIcons::QtIcons::lucideIcon(QtIcons::Lucide::Home));
+button7.setIcon(QIconKit::QIconKit::lucideIcon(QIconKit::Lucide::Home));
 
 // Font Awesome 图标
-button8.setIcon(QtIcons::QtIcons::fontAwesomeIcon(QtIcons::FontAwesome::Home));
+button8.setIcon(QIconKit::QIconKit::fontAwesomeIcon(QIconKit::FontAwesome::Home));
 ```
 
 ## 图标浏览器
 
-QtIcons 包含一个图标浏览器示例，您可以通过以下命令运行：
+QIconKit 包含一个图标浏览器示例，您可以通过以下命令运行：
 
 ```bash
-./bin/QtIconsExamples
+./bin/QIconKitExamples
 ```
 
 图标浏览器提供了一个直观的界面，让您可以浏览所有可用的图标，并支持搜索和颜色自定义功能。
@@ -163,7 +163,7 @@ QtIcons 包含一个图标浏览器示例，您可以通过以下命令运行：
 如果您需要创建自己的图标工厂，可以继承 `FontIconProvider` 类：
 
 ```cpp
-class MyIconFactory : public QtIcons::FontIconProvider {
+class MyIconFactory : public QIconKit::FontIconProvider {
 public:
     static MyIconFactory& instance() {
         static MyIconFactory s_instance;
@@ -202,4 +202,4 @@ private:
 
 ## 贡献
 
-欢迎贡献！如果您想为 QtIcons 添加新功能、修复问题或改进文档，请提交 Pull Request。
+欢迎贡献！如果您想为 QIconKit 添加新功能、修复问题或改进文档，请提交 Pull Request。
