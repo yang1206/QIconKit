@@ -92,4 +92,116 @@ QIcon QIconKit::materialIcon(int iconCode, Material::Style style, int size, cons
     return MaterialIconFactory::instance(style).icon(iconCode, style, size, color);
 }
 
+
+AnimatedIcon* QIconKit::createAnimatedIcon(const QIcon& icon,
+                                         AnimationType type,
+                                         const AnimationParams& params,
+                                         QWidget* parent) {
+    return new AnimatedIcon(icon, type, params, parent);
+}
+
+AnimatedIcon* QIconKit::createAnimatedRemixIcon(Remix::Icon icon,
+                                              AnimationType type,
+                                              int size,
+                                              const QColor& color,
+                                              const AnimationParams& params,
+                                              QWidget* parent) {
+    QIcon qicon = remixIcon(icon, size, color);
+    AnimatedIcon* animatedIcon = new AnimatedIcon(qicon, type, params, parent);
+    animatedIcon->setIconSize(QSize(size, size));
+    animatedIcon->setIconColor(color);
+    return animatedIcon;
+}
+
+AnimatedIcon* QIconKit::createAnimatedLucideIcon(Lucide::Icon icon,
+                                               AnimationType type,
+                                               int size,
+                                               const QColor& color,
+                                               const AnimationParams& params,
+                                               QWidget* parent) {
+    QIcon qicon = lucideIcon(icon, size, color);
+    AnimatedIcon* animatedIcon = new AnimatedIcon(qicon, type, params, parent);
+    animatedIcon->setIconSize(QSize(size, size));
+    animatedIcon->setIconColor(color);
+    return animatedIcon;
+}
+
+AnimatedIcon* QIconKit::createAnimatedFontAwesomeIcon(FontAwesome::Icon icon,
+                                                   AnimationType type,
+                                                   int size,
+                                                   const QColor& color,
+                                                   const AnimationParams& params,
+                                                   QWidget* parent) {
+    QIcon qicon = fontAwesomeIcon(icon, size, color);
+    AnimatedIcon* animatedIcon = new AnimatedIcon(qicon, type, params, parent);
+    animatedIcon->setIconSize(QSize(size, size));
+    animatedIcon->setIconColor(color);
+    return animatedIcon;
+}
+
+AnimatedIcon* QIconKit::createAnimatedMaterialFilledIcon(Material::Filled::Icon icon,
+                                                     AnimationType type,
+                                                     int size,
+                                                     const QColor& color,
+                                                     const AnimationParams& params,
+                                                     QWidget* parent) {
+    QIcon qicon = materialFilledIcon(icon, size, color);
+    AnimatedIcon* animatedIcon = new AnimatedIcon(qicon, type, params, parent);
+    animatedIcon->setIconSize(QSize(size, size));
+    animatedIcon->setIconColor(color);
+    return animatedIcon;
+}
+
+AnimatedIcon* QIconKit::createAnimatedMaterialOutlinedIcon(Material::Outlined::Icon icon,
+                                                     AnimationType type,
+                                                     int size,
+                                                     const QColor& color,
+                                                     const AnimationParams& params,
+                                                     QWidget* parent) {
+    QIcon qicon = materialOutlinedIcon(icon, size, color);
+    AnimatedIcon* animatedIcon = new AnimatedIcon(qicon, type, params, parent);
+    animatedIcon->setIconSize(QSize(size, size));
+    animatedIcon->setIconColor(color);
+    return animatedIcon;
+}
+
+AnimatedIcon* QIconKit::createAnimatedMaterialRoundedIcon(Material::Rounded::Icon icon,
+                                                     AnimationType type,
+                                                     int size,
+                                                     const QColor& color,
+                                                     const AnimationParams& params,
+                                                     QWidget* parent) {
+    QIcon qicon = materialRoundedIcon(icon, size, color);
+    AnimatedIcon* animatedIcon = new AnimatedIcon(qicon, type, params, parent);
+    animatedIcon->setIconSize(QSize(size, size));
+    animatedIcon->setIconColor(color);
+    return animatedIcon;
+}
+
+AnimatedIcon* QIconKit::createAnimatedMaterialSharpIcon(Material::Sharp::Icon icon,
+                                                     AnimationType type,
+                                                     int size,
+                                                     const QColor& color,
+                                                     const AnimationParams& params,
+                                                     QWidget* parent) {
+    QIcon qicon = materialSharpIcon(icon, size, color);
+    AnimatedIcon* animatedIcon = new AnimatedIcon(qicon, type, params, parent);
+    animatedIcon->setIconSize(QSize(size, size));
+    animatedIcon->setIconColor(color);
+    return animatedIcon;
+}
+
+AnimatedIcon* QIconKit::createAnimatedMaterialIcon(int iconCode,
+                                                  Material::Style style,
+                                                  int size,
+                                                  const QColor& color,
+                                                  const AnimationParams& params,
+                                                  QWidget* parent) {
+    QIcon qicon = materialIcon(iconCode, style, size, color);
+    AnimatedIcon* animatedIcon = new AnimatedIcon(qicon, AnimationType::Spin, params, parent);
+    animatedIcon->setIconSize(QSize(size, size));
+    animatedIcon->setIconColor(color);
+    return animatedIcon;
+}
+
 } // namespace QtIcons
