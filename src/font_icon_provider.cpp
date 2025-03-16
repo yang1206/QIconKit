@@ -81,54 +81,38 @@ QIcon FontIconProvider::renderIcon(int iconCode, int size, const QColor& color) 
     // 获取设备像素比
     qreal dpr = qApp->devicePixelRatio();
 
-    // 为4K屏幕优化，创建更多尺寸的图标
-    QList<int> sizes;
-    // 基础尺寸
-    sizes << size;
-    // 只有当设备像素比大于1.0时才生成2x尺寸
-    if (dpr > 1.0) {
-        sizes << size * 2;
-    }
 
-    // 只有当设备像素比大于2.0时才生成4x尺寸
-    if (dpr > 2.0) {
-        sizes << size * 4;
-    }
+    // 创建足够大的图像以适应高分辨率
+    int actualSize = size * dpr;
+    QPixmap pixmap(actualSize, actualSize);
+    pixmap.setDevicePixelRatio(dpr);
+    pixmap.fill(Qt::transparent);
 
-    for (int pixelSize : sizes) {
-        // 创建足够大的图像以适应高分辨率
-        int actualSize = pixelSize;
-        QPixmap pixmap(actualSize, actualSize);
-        pixmap.fill(Qt::transparent);
+    QPainter painter;
+    painter.begin(&pixmap);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
+    painter.setPen(color);
 
-        QPainter painter;
-        painter.begin(&pixmap);
-        painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
-        painter.setPen(color);
+    QFont font(m_fontFamily);
+    // 确保字体大小与图标大小匹配
+    font.setPixelSize(size);
+    painter.setFont(font);
 
-        QFont font(m_fontFamily);
-        // 确保字体大小与图标大小匹配
-        font.setPixelSize(actualSize * 0.9); // 稍微调整以确保图标完全显示
-        painter.setFont(font);
+    // 在图标中心绘制文本
+    QString text = QString(QChar(iconCode));
+    painter.drawText(QRect(0, 0, size, size), Qt::AlignCenter, text);
+    painter.end();
 
-        // 在图标中心绘制文本
-        QString text = QString(QChar(iconCode));
-        painter.drawText(QRect(0, 0, actualSize, actualSize), Qt::AlignCenter, text);
-        painter.end();
 
-        // 设置设备像素比
-        pixmap.setDevicePixelRatio(1.0); // 确保不会被自动缩放
-
-        // 为不同尺寸添加到图标
-        icon.addPixmap(pixmap, QIcon::Normal, QIcon::Off);
-        icon.addPixmap(pixmap, QIcon::Normal, QIcon::On);
-        icon.addPixmap(pixmap, QIcon::Disabled, QIcon::Off);
-        icon.addPixmap(pixmap, QIcon::Disabled, QIcon::On);
-        icon.addPixmap(pixmap, QIcon::Active, QIcon::Off);
-        icon.addPixmap(pixmap, QIcon::Active, QIcon::On);
-        icon.addPixmap(pixmap, QIcon::Selected, QIcon::Off);
-        icon.addPixmap(pixmap, QIcon::Selected, QIcon::On);
-    }
+    // 为不同尺寸添加到图标
+    icon.addPixmap(pixmap, QIcon::Normal, QIcon::Off);
+    icon.addPixmap(pixmap, QIcon::Normal, QIcon::On);
+    icon.addPixmap(pixmap, QIcon::Disabled, QIcon::Off);
+    icon.addPixmap(pixmap, QIcon::Disabled, QIcon::On);
+    icon.addPixmap(pixmap, QIcon::Active, QIcon::Off);
+    icon.addPixmap(pixmap, QIcon::Active, QIcon::On);
+    icon.addPixmap(pixmap, QIcon::Selected, QIcon::Off);
+    icon.addPixmap(pixmap, QIcon::Selected, QIcon::On);
 
     return icon;
 }
